@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Order</title>
+    <style>
+        body {
+            margin: 0px auto;
+            padding: 0px;
+            text-align: center;
+            width: 100%;
+            background-color: rgb(121, 182, 121)
+        }
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        form {
+            border: 2px solid black;
+            border-radius: 5px;
+            width: 400px;
+            height: 225px;
+            text-align: center;
+            margin: 0px auto;
+            background-color: rgb(48, 47, 47);
+            padding-top: 10px;
+        }
+        label {
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h2>Change Order</h2>
+        <a href="/" style="color: yellow;">Back to purchases</a>
+    </div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red;">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/cookie/edit_order/{{update.id}}" method="post">
+        <label for="customer_name">Customer Name: </label>
+        <br>
+        <input type="text" name="customer_name" value="{{update.customer_name}}">
+        <br>
+        <br>
+        <label for="cookie_type">Cookie Type: </label>
+        <br>
+        <input type="text" name="cookie_type" value="{{update.cookie_type}}">
+        <br>
+        <br>
+        <label for="number_of_boxes">Number of boxes: </label>
+        <br>
+        <input type="number" name="number_of_boxes" value="{{update.number_of_boxes}}">
+        <br>
+        <br>
+        <input type="hidden" name="id" value="{{update.id}}">
+        <input type="submit" value="Log">
+    </form>
+</body>
+</html>

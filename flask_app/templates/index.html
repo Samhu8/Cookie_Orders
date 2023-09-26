@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Orders</title>
+    <style>
+        body, table {
+            margin: 0px auto;
+            padding: 0px;
+            text-align: center;
+            width: 75%;
+            background-color: rgb(121, 182, 121);
+        }
+        .home {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin: auto;
+        }
+        table,td{
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: whitesmoke;">Cookie Orders</h1>
+    <div class="home">
+        <h2 style="color: whitesmoke;">All Orders</h2>
+        <a href="/cookie/new_order" style="color: yellow;">+ New Order</a>
+    </div>
+    <table>
+        <thead style="background-color: grey;">
+            <tr>
+                <th>Customer Name</th>
+                <th>Cookie Type</th>
+                <th>Number of Boxes</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody style="background-color: rgb(231, 207, 176);">
+            {% for order in orders %}
+            <tr>
+                <td>{{order.customer_name}}</td>
+                <td>{{order.cookie_type}}</td>
+                <td>{{order.number_of_boxes}}</td>
+                <td><a href="/cookie/edit_order/{{order.id}}">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
